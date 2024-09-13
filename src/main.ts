@@ -33,11 +33,14 @@ import '@ionic/vue/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import { IonPage ,IonContent } from '@ionic/vue';
+import { IonPage ,IonContent ,IonChip ,IonRefresher, IonRefresherContent, } from '@ionic/vue';
 const app = createApp(App)
   .use(IonicVue)
   .component("IonPage" , IonPage)
+  .component("IonChip" , IonChip)
   .component("IonContent" , IonContent)
+  .component("IonRefresher" , IonRefresher)
+  .component("IonRefresherContent" , IonRefresherContent)
   .use(router);
 
 router.isReady().then(() => {

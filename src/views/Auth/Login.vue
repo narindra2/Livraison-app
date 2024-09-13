@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Bienvenue</h4>
-                    <h5 class="card-subtitle">Entrer vos indetifiants pour <span class="text-success">continue.</span> </h5>
+                    <h5 class="card-subtitle">Entrer vos indetifiants pour <span class="text-dark">continue.</span> </h5>
                 </div>
             </div>
             <div class="card">
@@ -27,7 +27,7 @@
                             </div>
                         </div>
                         <div class="form-group  text-center">
-                            <button class="btn btn-block btn-success" @click="submitLoginForm()" >Se connecter</button>
+                            <button class="btn btn-block btn-success " @click="submitLoginForm()" >Se connecter</button>
                         </div>
                         <div class="mt-3 row" >
                             <div class="col-md-6">
@@ -58,7 +58,7 @@ export default {
     },
     methods : {
         submitLoginForm(){
-            return this.router.push('/tabs/tab3');
+            return this.router.push('/tabs/tab1');
         }
     }
 }

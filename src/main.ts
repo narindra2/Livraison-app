@@ -33,9 +33,11 @@ import '@ionic/vue/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
-
+import { IonPage ,IonContent } from '@ionic/vue';
 const app = createApp(App)
   .use(IonicVue)
+  .component("IonPage" , IonPage)
+  .component("IonContent" , IonContent)
   .use(router);
 
 router.isReady().then(() => {

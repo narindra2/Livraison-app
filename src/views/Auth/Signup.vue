@@ -2,48 +2,66 @@
     <ion-page>
     <ion-content :fullscreen="true">
         <div class="mt-2 container">
-            <div class="card">
+            <div class="card shadow mb-2">
                 <div class="card-body">
-                    <h4 class="card-title">Bienvenue  à vous</h4>
-                    <h5 class="card-subtitle">Entrer vos indetifiants pour <span class="text-dark">créer votre compte.</span> </h5>
+                    <p class="card-subtitle mb-3">Bienvenue  à vous</p>
+                    <p class="card-subtitle">Entrer vos indetifiants pour <span class="text-dark">créer votre compte.</span> </p>
                 </div>
             </div>
-            <div class="card">
+            <div class="card shadow">
                 <div class="card-body">
-                        <div class="form-group">
-                            <label for="name">Nom</label>
-                            <input class="form-control" type="text" id="name" required="" value="" placeholder="Votre nom">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input class="form-control" type="email" id="email" required="" value="john@deo.com" placeholder="john@deo.com">
-                        </div>
-                        <div class="form-group ">
-                            <label for="phone">Mot de passe</label>
-                            <input class="form-control" type="text" required="" id="phone" placeholder="034 00 111 22" >
-                        </div>
-                        <div class="form-group ">
-                            <label for="password1">Mot de passe</label>
-                            <input class="form-control" type="password" required="" id="password1" value="123456"
-                                placeholder="Entrer votre mot de passe">
-                        </div>
-                        <div class="form-group ">
-                            <label for="password1">Confirmer mot  de passe</label>
-                            <input class="form-control" type="password" required="" id="password1" value="123456"
-                                placeholder="Confirmer votre mot de passe">
-                        </div>
-
-                        <div class="form-group ">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="accept">
-                                <label class="custom-control-label" for="accept">J' accepte le contrat d'utilisation</label>
+                       
+                        <div class="form-group mb-3">
+                            <label class="form-check-label" for="">Nom :</label>
+                            <div class="input-group input-group-merge">
+                                <span class="input-group-text" id="basic-addon11"><i class='bx bxs-user-circle fs-2' ></i> </span>
+                                <input class="form-control" type="text" id="name" required="" value="" placeholder="Votre nom">
                             </div>
                         </div>
-                        <div class="form-group  text-center">
+                        <div class="form-group mb-3">
+                            <label class="form-check-label" for="">Email :</label>
+                            <div class="input-group input-group-merge">
+                                <span class="input-group-text" id="basic-addon11"><i class='bx bxs-envelope fs-2' ></i> </span>
+                                <input class="form-control" type="email" id="email" required="" value="john@deo.com" placeholder="john@deo.com">
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-check-label" for="">Téléphone :</label>
+                            <div class="input-group input-group-merge">
+                                <span class="input-group-text" id="basic-addon11"><i class='bx bxs-phone fs-2' ></i> </span>
+                                <input class="form-control" type="text" id="phone" required="" value="" placeholder="034 00 111 22">
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-check-label" for="">Mot de passe :</label>
+                            <div class="input-group input-group-merge">
+                                <span class="input-group-text" id="basic-addon11"><i class='bx bxs-key fs-2'></i> </span>
+                                <input class="form-control" type="text" required="" id="password1" value="123456"
+                                placeholder="Entrer votre mot de passe">
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-check-label" for="">Confirmer mot de passe :</label>
+                            <div class="input-group input-group-merge">
+                                <span class="input-group-text" id="basic-addon11"><i class='bx bxs-key fs-2'></i> </span>
+                                <input class="form-control" type="text" required="" id="password1" value="123456"
+                                placeholder="Entrer votre mot de passe">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3 ">
+                            <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="accept" >
+                            <label class="custom-control-label" for="accept">J' accepte le contrat d'utilisation</label>
+                          </div>
+                        </div>
+                        
+                        <div class="d-grid gap-2 ">
                             <button class="btn btn-block btn-success" @click="submitSignupForm()" >Créer maintenant</button>
+
                         </div>
                         <div class="mt-3" >
-                            <p class="card-subtitle fs-2" >J' ai déjà un compte   <RouterLink class="text-success" to="/login">se connecter</RouterLink>  </p>
+                            <p class="card-subtitle " >J' ai déjà un compte   <RouterLink class="text-success" to="/login">se connecter</RouterLink>  </p>
                         </div>
                 </div>
             </div>
@@ -65,7 +83,7 @@ export default {
     },
     methods : {
         submitSignupForm(){
-            return this.router.push('/tabs/tab3');
+            return this.router.push('/tabs/tab1');
         }
     }
 }

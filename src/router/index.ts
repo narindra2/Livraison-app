@@ -4,6 +4,8 @@ import TabsPage from '../views/TabsPage.vue'
 import Login from '@/views/Auth/Login.vue';
 import Signup from '@/views/Auth/Signup.vue';
 import ForgetPassWord from '@/views/Auth/ForgetPassWord.vue';
+import AddNewPackage from '@/views/Package/AddNewPackage.vue';
+import FinalisePackage from '@/views/Package/FinalisePackage.vue';
 const routes: Array<RouteRecordRaw> = [
  
   {
@@ -21,6 +23,16 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/forgetPassword',
     component: ForgetPassWord
+
+  },
+  {
+    path: '/addNewPackage',
+    component: AddNewPackage
+
+  },
+  {
+    path: '/finalisePackage',
+    component: FinalisePackage
 
   },
   {

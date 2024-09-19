@@ -33,7 +33,7 @@ import '@ionic/vue/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import { IonPage ,IonContent ,IonChip ,IonRefresher, IonRefresherContent,IonToolbar ,IonTitle , IonHeader } from '@ionic/vue';
+import { IonPage ,IonContent ,IonChip ,IonRefresher, IonRefresherContent,IonToolbar ,IonTitle , IonHeader ,IonFabButton ,IonFab ,IonFabList} from '@ionic/vue';
 const app = createApp(App)
   .use(IonicVue)
   .component("IonPage" , IonPage)
@@ -43,6 +43,9 @@ const app = createApp(App)
   .component("IonToolbar" , IonToolbar)
   .component("IonTitle" , IonTitle)
   .component("IonHeader" , IonHeader)
+  .component("IonFabButton" , IonFabButton)
+  .component("IonFab" , IonFab)
+  .component("IonFabList" , IonFabList)
   .component("IonRefresherContent" , IonRefresherContent)
   .use(router);
 

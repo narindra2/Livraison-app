@@ -22,7 +22,7 @@
                     </div>
                     <div class="mb-0">
                       <div class="col-md">
-                        <label class="form-check-label" for="">Votre colis est-il fragille :</label>
+                        <label class="form-check-label" for="">Votre colis est-il fragile ? :</label>
                           <div>
                             <div class="form-check form-check-inline mt-3 mx-4">
                             <input class="form-check-input" type="radio" name="fragille" id="nofragille" value="no" checked>
@@ -41,10 +41,10 @@
                 <div class="shadow p-2 mb-2 bg-white rounded ">
                   <div class="card-body ">
                     <div class="mb-3">
-                      <label class="form-check-label" for="">Lieux de recuperation de votre colis :</label>
+                      <label class="form-check-label" for="">Lieux de récupération de votre colis :</label>
                       <div class="input-group input-group-merge">
                         <span class="input-group-text" id="basic-addon11"><i class='bx bx-walk fs-2'></i> </span>
-                        <input type="text" class="form-control" placeholder="Lieux de recuperation " aria-label="Username" aria-describedby="basic-addon11">
+                        <input type="text" class="form-control" placeholder="Lieux de récupération " aria-label="Username" aria-describedby="basic-addon11">
                       </div>
                     
                     </div>
@@ -65,7 +65,7 @@
                    
                     <div class="mb-3">
                       <div class="col-md">
-                        <label class="form-check-label" for="">Votre colis sera livré par Express :</label>
+                        <label class="form-check-label" for="">Préférez-vous qu'on le livre par Express ? :</label>
                           <div>
                             <div class="form-check form-check-inline mt-3 mx-4">
                             <input class="form-check-input" type="radio" name="Express" id="noExpress" value="no" checked>
@@ -78,25 +78,21 @@
                           </div>
                         </div>
                     </div>
-                    
-                   
-                    
                   </div>
                 </div>
                 <div class="shadow p-2 mb-2 bg-white rounded ">
-                  <div class="card-body text-center ">
+                  <div class="card-body  ">
                     <div class="mb-0 demo-vertical-spacing">
-                      <label class="form-check-label mb-2" for="">Choississeer votre methode de paiment :  </label>
-                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                      <label class="form-check-label mb-2" for="">Choississez votre methode de paiment :  </label>
+                        <div class="btn-group text-center" role="group" aria-label="Basic radio toggle button group">
                               <input type="radio" class="btn-check" name="btnradio" id="btnradio1"   autocomplete="off">
                               <label class="btn btn-outline-success" for="btnradio1" @click="payment = 'mobile'"> Mobile money </label>
                               <input type="radio" class="btn-check" name="btnradio" id="btnradio3" checked autocomplete="off">
                               <label class="btn btn-outline-success" for="btnradio3"  @click="payment= ''">Après la livraison</label>
                           </div>
-                          <div  v-if="payment == 'mobile'">
                             <Transition>
-                              <div>
-                                <label class="form-check-label mb-2" for="">Mobile money :  </label> 
+                              <div class=" text-center"  v-if="payment == 'mobile'">
+                                <label class="form-check-label mt-1 mb-2" for="">Mobile money :  </label> 
                                 <div  class="btn-group mt-2 " role="group" aria-label="First group">
                                   <button type="button" class="btn btn-outline-success">
                                   Mvola
@@ -109,10 +105,7 @@
                                   </button>
                                 </div>
                               </div>
-                              
                           </Transition>
-                          </div>
-                          
                          
                     </div>
                     
@@ -120,11 +113,9 @@
                 </div>
                 <div class="shadow p-2 mb-1 bg-white rounded ">
                   <div class="d-grid gap-2 ">
-                      <RouterLink class=" btn  btn-success" to="/tabs/tab1" >Continuer <i class='bx bx-right-arrow-alt fs-2'></i> </RouterLink>
+                      <RouterLink class=" btn  btn-success" :to="{name:'home'}" >Continuer <i class='bx bx-right-arrow-alt fs-2'></i> </RouterLink>
                     </div>
                 </div>
-              
-                           
         </div>
       </ion-content>
     </ion-page>

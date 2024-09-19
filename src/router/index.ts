@@ -6,6 +6,7 @@ import Signup from '@/views/Auth/Signup.vue';
 import ForgetPassWord from '@/views/Auth/ForgetPassWord.vue';
 import AddNewPackage from '@/views/Package/AddNewPackage.vue';
 import FinalisePackage from '@/views/Package/FinalisePackage.vue';
+import DetailPackage from '@/views/Package/DetailPackage.vue';
 const routes: Array<RouteRecordRaw> = [
  
   {
@@ -14,11 +15,13 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/login',
-    component: Login
+    component: Login,
+    name: 'login', 
   },
   {
     path: '/signup',
-    component: Signup
+    component: Signup,
+    name: 'signup', 
   },
   {
     path: '/forgetPassword',
@@ -27,7 +30,8 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/addNewPackage',
-    component: AddNewPackage
+    component: AddNewPackage,
+    name: 'addNewPackage', 
 
   },
   {
@@ -36,12 +40,18 @@ const routes: Array<RouteRecordRaw> = [
 
   },
   {
+    path: '/detailPackage',
+    component: DetailPackage,
+    name: 'DetailPackage', 
+  },
+  {
     path: '/tabs/',
     component: TabsPage,
     children: [
       {
         path: '',
-        redirect: '/tabs/tab1'
+        redirect: '/tabs/tab1',
+        name: 'home', 
       },
       {
         path: 'tab1',
@@ -54,6 +64,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'tab3',
         component: () => import('@/views/Tab3Page.vue')
+      },
+      {
+        path: 'notification',
+        component: () => import('@/views/Notification.vue')
       }
     ]
   }

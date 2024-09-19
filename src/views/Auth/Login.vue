@@ -1,7 +1,13 @@
 <template>
     <ion-page>
     <ion-content :fullscreen="true">
-        <div class="mt-5 container ">
+        <div class="mt-1 container ">
+                    <div class="card-body text-center">
+                        <div class="app-brand justify-content-center logo-login" >
+                     <img src="/assets/images/logo.png" style="object-fit: cover;" class="d-block rounded mb-0" height="150" width="150" >
+                </div>
+                  </div>
+                
             <div class="card shadow mb-2">
                 <div class="card-body">
                     <h4 class="card-subtitle mb-3">Bienvenue</h4>
@@ -56,7 +62,13 @@
     </ion-content>
     </ion-page>
 </template>
-
+<style>
+.logo-login{
+    margin-top: -48px; 
+    margin-bottom: -40px; 
+    margin-right: 67px;
+}
+</style>
 <script>
 import { useRouter } from 'vue-router';
 export default {

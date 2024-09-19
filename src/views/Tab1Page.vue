@@ -10,58 +10,58 @@
                             <div class="shadow p-2 mt-0 mb-2 bg-white rounded">
                               <input class="form-control  " type="search" placeholder="Rechercher ..." aria-label="Rechercher ...">
                             </div>
-                            <div class="shadow p-2 mb-2 bg-white rounded text-center">
+                            <div class="shadow p-2 mb-2 bg-white rounded text-center ">
                               <button type="button" class="mx-2 btn waves-effect waves-light btn-rounded btn-outline-success ">Tout</button>
                               <button type="button" class="mx-2 btn waves-effect waves-light btn-rounded btn-outline-success">En cours</button>
                               <button type="button" class="mx-2 btn waves-effect waves-light btn-rounded btn-outline-success">Livré</button>
                             </div>
-                            <div class="card shadow bg-white p-3 text-start mb-2">
+                            <div class="card shadow bg-white p-3 text-start mb-2" @click="toDetail()">
                               <figure class="mb-0">
                                 <ul class="list-group list-group-flush">
-                                  <li class="list-group-item"> <mark>A recupré </mark>  :  <i class='bx bx-walk fs-2'></i> Fasakarana , Antannarivo </li>
-                                  <li class="list-group-item"><span class="text-dark">A livré à</span>  : <i class='bx bxs-map mb-1 fs-2'></i> Anosy , Antannarivo</li>
+                                  <li class="list-group-item"> <mark>Récupérer </mark>  :  <i class='bx bx-walk fs-2'></i> Fasakarana , Antannarivo </li>
+                                  <li class="list-group-item"><span class="text-dark markerLocation ">A livré à</span>  : <i class='bx bxs-map mb-1 fs-2'></i> Anosy , Antannarivo</li>
                                 </ul>
                               </figure>
                             </div>
-                            <div class="card shadow bg-white p-3 text-start mb-2">
+                            <div class="card shadow bg-white p-3 text-start mb-2" @click="toDetail()">
                               <figure class="mb-0">
                                 <ul class="list-group list-group-flush">
-                                  <li class="list-group-item"><span class="text-dark">A livré à</span>  : <i class='bx bxs-map mb-1 fs-2'></i> Anosy , Antannarivo</li>
-                                </ul>
-                              </figure>
-                            </div>
-                            
-                            <div class="card shadow  bg-white p-3 text-start mb-2">
-                              <figure class="mb-0">
-                                <ul class="list-group list-group-flush">
-                                  <li class="list-group-item"><mark>A recupré </mark>  <i class='bx bx-walk fs-2'></i> Fasakarana , Antannarivo </li>
-                                  <li class="list-group-item"><span class="text-dark">A livré à</span>  : <i class='bx bxs-map mb-1 fs-2'></i> Anosy , Antannarivo</li>
+                                  <li class="list-group-item"><span class="text-dark markerLocation">A livré à</span>  : <i class='bx bxs-map mb-1 fs-2'></i> Anosy , Antannarivo</li>
                                 </ul>
                               </figure>
                             </div>
                             
-                            <div class="card shadow  bg-white p-3 text-start mb-2">
+                            <div class="card shadow border border-success  bg-white p-3 text-start mb-2" @click="toDetail()">
                               <figure class="mb-0">
                                 <ul class="list-group list-group-flush">
-                                  <li class="list-group-item"><mark>A recupré </mark>  <i class='bx bx-walk fs-2'></i> Fasakarana , Antannarivo </li>
-                                  <li class="list-group-item"><span class="text-dark">A livré à</span>  : <i class='bx bxs-map mb-1 fs-2'></i> Anosy , Antannarivo</li>
+                                  <li class="list-group-item"><mark>Récupérer </mark>  <i class='bx bx-walk fs-2'></i> Fasakarana , Antannarivo </li>
+                                  <li class="list-group-item"><span class="text-dark markerLocation">A livré à</span>  : <i class='bx bxs-map mb-1 fs-2'></i> Anosy , Antannarivo</li>
                                 </ul>
                               </figure>
                             </div>
                             
-                            <div class="card shadow  bg-white p-3 text-start mb-2">
+                            <div class="card shadow  bg-white p-3 text-start mb-2" @click="toDetail()">
                               <figure class="mb-0">
                                 <ul class="list-group list-group-flush">
-                                  <li class="list-group-item"><mark>A recupré </mark>  <i class='bx bx-walk fs-2'></i> Fasakarana , Antannarivo </li>
-                                  <li class="list-group-item"><span class="text-dark">A livré à</span>  : <i class='bx bxs-map mb-1 fs-2'></i> Anosy , Antannarivo</li>
+                                  <li class="list-group-item"><mark>Récupérer </mark>  <i class='bx bx-walk fs-2'></i> Fasakarana , Antannarivo </li>
+                                  <li class="list-group-item"><span class="text-dark markerLocation">A livré à</span>  : <i class='bx bxs-map mb-1 fs-2'></i> Anosy , Antannarivo</li>
                                 </ul>
                               </figure>
                             </div>
-                            <div class="card shadow  bg-white p-3 text-start mb-2">
+                            
+                            <div class="card shadow  bg-white p-3 text-start mb-2" @click="toDetail()"> 
                               <figure class="mb-0">
                                 <ul class="list-group list-group-flush">
-                                  <li class="list-group-item"><mark>A recupré </mark>  <i class='bx bx-walk fs-2'></i> Fasakarana , Antannarivo </li>
-                                  <li class="list-group-item"><span class="text-dark">A livré à</span>  : <i class='bx bxs-map mb-1 fs-2'></i> Anosy , Antannarivo</li>
+                                  <li class="list-group-item"><mark>Récupérer </mark>  <i class='bx bx-walk fs-2'></i> Fasakarana , Antannarivo </li>
+                                  <li class="list-group-item"><span class="text-dark markerLocation">A livré à</span>  : <i class='bx bxs-map mb-1 fs-2'></i> Anosy , Antannarivo</li>
+                                </ul>
+                              </figure>
+                            </div>
+                            <div class="card shadow  bg-white p-3 text-start mb-2" @click="toDetail()">
+                              <figure class="mb-0">
+                                <ul class="list-group list-group-flush">
+                                  <li class="list-group-item"><mark>Récupérer </mark>  <i class='bx bx-walk fs-2'></i> Fasakarana , Antannarivo </li>
+                                  <li class="list-group-item"><span class="text-dark markerLocation">A livré à</span>  : <i class='bx bxs-map mb-1 fs-2'></i> Anosy , Antannarivo</li>
                                 </ul>
                               </figure>
                             </div>
@@ -71,56 +71,50 @@
                         </ion-refresher>
       </div>
       <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-        <ion-fab-button color="dark" class="text-white">
-        <i class='bx bx-up-arrow-alt  fs-1' ></i>
-        </ion-fab-button>
-        <ion-fab-list side="top">
-          <ion-fab-button color="success">
-            <RouterLink class="text-success" to="/addNewPackage">   <i class='bx bxs-cart-add fs-2 text-white' ></i></RouterLink>
+          <ion-fab-button  >
+            <i class='bx bx-up-arrow-alt text-white fs-1' ></i>
           </ion-fab-button>
-          <ion-fab-button color="danger">
-            <RouterLink  to="/login">  <i class=' fs-2 text-white bx bx-log-out'></i></RouterLink>
-          </ion-fab-button>
-        </ion-fab-list>
-    </ion-fab>
+            <ion-fab-list side="top">
+              <RouterLink class="text-success" to="/addNewPackage">
+                <ion-fab-button >
+                    <i class='bx bxs-cart-add fs-2 text-white' ></i>
+                </ion-fab-button>
+              </RouterLink>
+              <RouterLink  :to="{name:'login'}" class="mb-1"> 
+                <ion-fab-button color="danger">
+                  <i class=' fs-2 text-white bx bx-log-out'></i>
+                </ion-fab-button>
+            </RouterLink>
+          </ion-fab-list>
+      </ion-fab>
     </ion-content>
   </ion-page>
 </template>
-
-<script setup lang="ts">
-import  {IonFab, IonFabButton, IonFabList, IonIcon , IonPage, IonHeader, IonToolbar, IonTitle, IonContent ,IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle} from '@ionic/vue';
-import { location } from "ionicons/icons"
-import { defineComponent } from 'vue';
-import {
-    chevronDownCircle,
-    chevronForwardCircle,
-    chevronUpCircle,
-    colorPalette,
-    document,
-    globe,
-    add
-  } from 'ionicons/icons';
-defineComponent({
-    components: { IonIcon ,  IonFab, IonFabButton, IonFabList ,IonPage, IonHeader, IonToolbar, IonTitle, IonContent ,IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle },
-    setup() {
-      const handleRefresh = (event: CustomEvent) => {
-        setTimeout(() => {
-          // Any calls to load data go here
-          event.target.complete();
-        }, 2000);
-      }
-        return {
-          location,   
-          chevronDownCircle,
-          chevronForwardCircle,
-          chevronUpCircle,
-          colorPalette,
-          document,
-          globe,
-          add    ,
-          handleRefresh
+<style>
+ 
+  ion-fab-button {
+    --background:#71dd37;
+    --background-activated: #71dd37;
+    --background-hover: #71dd37;
+    --box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  }
+</style>
+<script>
+import { useRouter } from 'vue-router';
+export default {
+    data () {
+         return {
+           router :  useRouter(),
+         }
+    },
+    mounted() {
+        
+    },
+    methods : {
+        toDetail(){
+            return this.router.push('/detailPackage');
         }
     }
-})
+}
 </script>
 

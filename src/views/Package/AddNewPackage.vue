@@ -6,7 +6,7 @@
         </ion-toolbar>
       </ion-header>
       <ion-content :fullscreen="true">
-            <div class="container-xxl flex-grow-1 container-p-y">
+            <div class="container-xxl flex-grow-1 container-p-y mb-5">
                 <div class="shadow p-2 mb-2 bg-white rounded ">
                   <div class="card-body ">
                     <div class="mb-3">
@@ -52,7 +52,7 @@
                       <label class="form-check-label" for="">Lieux de livraison de votre colis : </label>
                       <div class="input-group input-group-merge">
                         <span class="input-group-text" id="basic-addon11"><i class='bx bxs-map fs-2' ></i> </span>
-                        <input type="text" class="form-control" placeholder="Lieux de livraison" aria-label="Username" aria-describedby="basic-addon11">
+                        <input type="text" v-model="locationStart" class="form-control" placeholder="Lieux de livraison">
                       </div>
                     </div>
                     <div class="mb-3">
@@ -63,7 +63,7 @@
                       </div>
                     </div>
                    
-                    <div class="mb-3">
+                    <div class="mb-4">
                       <div class="col-md">
                         <label class="form-check-label" for="">Préférez-vous qu'on le livre par Express ? :</label>
                           <div>
@@ -75,6 +75,14 @@
                             <input class="form-check-input" type="radio" name="Express" id="yesExpress" value="yes">
                             <label class="form-check-label" for="yesExpress">Oui</label>
                           </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                      <div class="col-md text-center">
+                        <label class="form-check-label" for="">Total montant  à payé  :</label>
+                          <div class="border border-success">
+                            <h5> {{ price }} Ariray</h5>
                           </div>
                         </div>
                     </div>
@@ -137,7 +145,11 @@ export default {
     data () {
          return {
            today : null,
-           payment : ''
+           payment : '',
+           locationStart : '',
+           locationEnd : '',
+           showPrice : false,
+           price : "0.00"
          }
     },
     mounted() {
@@ -156,6 +168,18 @@ export default {
             // Any calls to load data go here
           }, 2000);
         }
+    },
+    watch :{
+      locationStart(newval, old){
+        if (newval) {
+          this.showPrice = true
+           this.price = "5.000"
+        }else{
+          this.showPrice = false;
+           this.price = "0.00"
+        }
+       
+      }
     }
 }
 </script>

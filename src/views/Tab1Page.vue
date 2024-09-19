@@ -70,23 +70,7 @@
                           <ion-refresher-content></ion-refresher-content>
                         </ion-refresher>
       </div>
-      <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-          <ion-fab-button  >
-            <i class='bx bx-up-arrow-alt text-white fs-1' ></i>
-          </ion-fab-button>
-            <ion-fab-list side="top">
-              <RouterLink class="text-success" to="/addNewPackage">
-                <ion-fab-button >
-                    <i class='bx bxs-cart-add fs-2 text-white' ></i>
-                </ion-fab-button>
-              </RouterLink>
-              <RouterLink  :to="{name:'login'}" class="mb-1"> 
-                <ion-fab-button color="danger">
-                  <i class=' fs-2 text-white bx bx-log-out'></i>
-                </ion-fab-button>
-            </RouterLink>
-          </ion-fab-list>
-      </ion-fab>
+      
     </ion-content>
   </ion-page>
 </template>

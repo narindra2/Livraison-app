@@ -33,7 +33,25 @@ import '@ionic/vue/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
+
+//https://vee-validate.logaretm.com/v4/guide/global-validators/
+import { defineRule } from 'vee-validate';
+import { Form as VeeForm, Field   } from 'vee-validate';
+import { all } from '@vee-validate/rules';
+Object.entries(all).forEach(([name, rule]) => {
+  defineRule(name, rule);
+});
+import { configure } from 'vee-validate';
+import { localize } from '@vee-validate/i18n';
+import { setLocale } from '@vee-validate/i18n';
+// import fr from '@vee-validate/i18n/dist/locale/fr.json';
+import fr from '../assets/validation/fr.json';
+setLocale('fr');
+configure({
+  generateMessage: localize({fr}),
+});
 import { IonPage ,IonContent ,IonChip ,IonRefresher, IonRefresherContent,IonToolbar ,IonTitle , IonHeader ,IonFabButton ,IonFab ,IonFabList} from '@ionic/vue';
+import ErrorInputForm from '@/views/Components/ErrorInputForm.vue';
 const app = createApp(App)
   .use(IonicVue)
   .component("IonPage" , IonPage)
@@ -47,8 +65,10 @@ const app = createApp(App)
   .component("IonFab" , IonFab)
   .component("IonFabList" , IonFabList)
   .component("IonRefresherContent" , IonRefresherContent)
+  .component("ErrorInputForm" , ErrorInputForm)
+  .component("VeeForm" , VeeForm)
+  .component("Field" , Field)
   .use(router);
-
 router.isReady().then(() => {
   app.mount('#app');
 });

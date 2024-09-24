@@ -40,11 +40,11 @@
                         </div>
                         <div class="form-group mb-3 ">
                             <div class="form-check">
-                            <Field class="form-check-input" type="checkbox" name="remeberme" id="remeberme" :value="true" />
-                            <label class="form-check-label" for="remeberme"> Se souvenir de moi. </label>
-                          </div>
+                                <Field class="form-check-input" type="checkbox" name="remeberme" id="remeberme" :value="true" />
+                                <label class="form-check-label" for="remeberme"> Se souvenir de moi. </label>
+                            </div>
                         </div>
-                       
+                        <ErrorInputForm class="text-center" v-if="loginMessage" :message="loginMessage"/>
                         <div class="d-grid gap-2 ">
                             <button class=" btn  btn-success" :disabled ="!meta.valid" >Se connecter</button>
                         </div>
@@ -73,13 +73,14 @@
 }
 </style>
 <script>
+import { axiosInstance, getDataInLocalStorage, saveDataInLocalStorage , isAuthenticated } from '@/services/authService';
 import { useRouter } from 'vue-router';
-
 export default {
     data () {
          return {
             router :  useRouter(),
             inputPassword : "password",
+            loginMessage : "",
             schema  : {
                 email: 'required|email',
                 password: 'required|min:2',
@@ -93,9 +94,21 @@ export default {
         
     },
     methods : {
-        onSubmit(values){
-            console.log(JSON.stringify(values, null, 2));
-            // return this.router.push('/tabs/tab1');
+        async onSubmit(dataForm){
+            this.loginMessage = "";
+            axiosInstance.post("/api/singin",dataForm).then( response =>  {
+                if(!response.data.success && response.data.connection){
+                    this.loginMessage = response.data.message
+                }else{
+                    saveDataInLocalStorage("authUserInfo" ,response.data.authData)
+                    const isAuth =  isAuthenticated();
+                    if (isAuth) {
+                        this.router.push({ name: 'home'})
+                    }
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
         },
          onInvalidSubmit({ values, errors, results }) {
             if (errors) {

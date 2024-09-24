@@ -7,8 +7,9 @@ import ForgetPassWord from '@/views/Auth/ForgetPassWord.vue';
 import AddNewPackage from '@/views/Package/AddNewPackage.vue';
 import FinalisePackage from '@/views/Package/FinalisePackage.vue';
 import DetailPackage from '@/views/Package/DetailPackage.vue';
+import { isAuthenticated } from '@/services/authService';
 const routes: Array<RouteRecordRaw> = [
- 
+
   {
     path: '/',
     redirect: '/login'
@@ -16,12 +17,12 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     component: Login,
-    name: 'login', 
+    name: 'login',
   },
   {
     path: '/signup',
     component: Signup,
-    name: 'signup', 
+    name: 'signup',
   },
   {
     path: '/forgetPassword',
@@ -31,7 +32,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/addNewPackage',
     component: AddNewPackage,
-    name: 'addNewPackage', 
+    name: 'addNewPackage',
 
   },
   {
@@ -42,7 +43,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/detailPackage',
     component: DetailPackage,
-    name: 'DetailPackage', 
+    name: 'DetailPackage',
   },
   {
     path: '/tabs/',
@@ -51,7 +52,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '',
         redirect: '/tabs/tab1',
-        name: 'home', 
+        name: 'home',
       },
       {
         path: 'tab1',
@@ -77,5 +78,17 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes
 })
-
+/** Redirction if user not authenticade */
+/**
+ * La documention est ici : https://router.vuejs.org/guide/advanced/navigation-guards.html
+ */
+router.beforeEach(async (to, from ) => {
+  const isAuth = await isAuthenticated();
+  // console.log("isChech : " + isAuth);
+  // if (to.name != "login" && !isAuth) {
+  //    return{ name: 'login' }
+  // }else {
+  //   return{ name: 'home' }
+  // }
+})
 export default router

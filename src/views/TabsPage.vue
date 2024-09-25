@@ -38,7 +38,36 @@
 }
 
 </style>
-<script setup lang="ts">
+<script >
 import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
 import { ellipse, square, triangle } from 'ionicons/icons';
+import { destroySession } from '@/services/authService';
+import { toastController } from '@ionic/vue';
+import { useRouter } from 'vue-router';
+export default {
+  components : {toastController ,IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage, IonRouterOutlet},
+  data () {
+       return {
+         router :  useRouter(),
+       }
+  },
+  mounted() {
+  },
+  methods : {
+      submitSignupForm(){
+          return this.router.push('/tabs/tab1');
+      },
+      async presentToast(message = "") {
+        const toast = await toastController.create({
+          message: message,
+          duration: 1500,
+          position: "top",
+        });
+        await toast.present();
+      },
+       logOut() {
+        return destroySession()
+      },
+  }
+}
 </script>

@@ -84,21 +84,40 @@
   }
 </style>
 <script>
+import { axiosInstance } from '@/services/utilService';
 import { useRouter } from 'vue-router';
+import {  onIonViewDidEnter} from '@ionic/vue';
+import {ref} from 'vue'
 export default {
-    data () {
-         return {
-           router :  useRouter(),
-         }
-    },
-    mounted() {
-        
-    },
-    methods : {
-        toDetail(){
-            return this.router.push('/detailPackage');
-        }
+  data() {
+    return {
+      router: useRouter(),
     }
+  },
+  setup() {
+    const packages= ref([]);
+    function pingHost() {
+      axiosInstance.post("/api/ping").then(response => {
+        console.log(response.data);
+      }).catch((error) => {
+        console.log(error);
+      });
+    }
+    onIonViewDidEnter(() => {
+      pingHost();
+    });
+
+    return {
+      pingHost,
+      packages
+    }
+  },
+
+  methods: {
+    toDetail() {
+      return this.router.push('/detailPackage');
+    },
+  }
 }
 </script>
 

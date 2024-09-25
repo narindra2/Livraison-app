@@ -78,7 +78,7 @@
                     <i class='bx bxs-cart-add fs-2 text-white' ></i>
                 </ion-fab-button>
               </RouterLink> -->
-              <RouterLink  :to="{name:'login'}" class="mb-1"> 
+              <RouterLink  :to="{name:'login'}" @click="logOut()" class="mb-1"> 
                 <ion-fab-button color="danger">
                   <i class=' fs-2 text-white bx bx-log-out'></i>
                 </ion-fab-button>
@@ -90,6 +90,7 @@
 </template>
 
 <script>
+import { saveDataInLocalStorage } from '@/services/authService';
 import { toastController } from '@ionic/vue';
 import { useRouter } from 'vue-router';
 export default {
@@ -114,6 +115,9 @@ export default {
           position: "top",
         });
         await toast.present();
+      },
+       logOut() {
+        saveDataInLocalStorage("authUserInfo", null);
       },
   }
 }

@@ -7,7 +7,7 @@ import ForgetPassWord from '@/views/Auth/ForgetPassWord.vue';
 import AddNewPackage from '@/views/Package/AddNewPackage.vue';
 import FinalisePackage from '@/views/Package/FinalisePackage.vue';
 import DetailPackage from '@/views/Package/DetailPackage.vue';
-import { isAuthenticated } from '@/services/authService';
+import { getAuthTokenAccess, isAuthenticated } from '@/services/authService';
 const routes: Array<RouteRecordRaw> = [
 
   {
@@ -26,7 +26,9 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/forgetPassword',
-    component: ForgetPassWord
+    component: ForgetPassWord,
+    name: 'forgetPassword',
+
 
   },
   {
@@ -82,13 +84,30 @@ const router = createRouter({
 /**
  * La documention est ici : https://router.vuejs.org/guide/advanced/navigation-guards.html
  */
-router.beforeEach(async (to, from ) => {
-  const isAuth = await isAuthenticated();
-  // console.log("isChech : " + isAuth);
-  // if (to.name != "login" && !isAuth) {
-  //    return{ name: 'login' }
-  // }else {
-  //   return{ name: 'home' }
-  // }
+router.beforeEach(async (to, from, next) => {
+  const isAuth =  isAuthenticated();
+  const token =  await getAuthTokenAccess();
+  console.log("User authentifie : " + isAuth);
+  console.log("User token : " + token);
+  let guestRoutes = ["signup" , "forgetPassword"];
+  guestRoutes.forEach((guestRoute) => {
+    /** If not connected and user tired to acces in route  guest */
+    if (to.name == guestRoute && !isAuth) {
+      return next();
+    }
+      /** If  connected and user tired to acces in route  guest */
+    if (to.name == guestRoute && isAuth) {
+      return next({ name: 'home'})
+    }
+  });
+  /** If not connected and user tired to acces in route not guest */
+  if (to.name != 'login' && !isAuth) {
+    return next({ name: 'login'})
+  }
+  /** If not connected and  user tired to acces in route home  */
+  if (to.name == 'login' && isAuth) {
+    return next({ name: 'home'})
+  }
+  next()
 })
 export default router

@@ -36,7 +36,7 @@
                             <label class="form-check-label" for="">Mot de passe :</label>
                             <div class="input-group input-group-merge">
                                 <span class="input-group-text" id="basic-addon11"><i class='bx bxs-key fs-2'></i> </span>
-                                <input class="form-control" type="text" required="" id="password1" value="123456"
+                                <input class="form-control" type="text" required="" value="123456"
                                 placeholder="Entrer votre mot de passe">
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                             <label class="form-check-label" for="">Confirmer mot de passe :</label>
                             <div class="input-group input-group-merge">
                                 <span class="input-group-text" id="basic-addon11"><i class='bx bxs-key fs-2'></i> </span>
-                                <input class="form-control" type="text" required="" id="password1" value="123456"
+                                <input class="form-control" type="text" required="" value="123456"
                                 placeholder="Entrer votre mot de passe">
                             </div>
                         </div>
@@ -75,7 +75,7 @@ import { useRouter } from 'vue-router';
 export default {
     data () {
          return {
-           router :  useRouter(),
+           router : useRouter(),
          }
     },
     mounted() {

@@ -73,7 +73,8 @@
 }
 </style>
 <script>
-import { axiosInstance, getDataInLocalStorage, saveDataInLocalStorage , isAuthenticated } from '@/services/authService';
+import {   saveDataInLocalStorage , isAuthenticated } from '@/services/authService';
+import { axiosInstance  } from '@/services/utilService';
 import { useRouter } from 'vue-router';
 export default {
     data () {
@@ -83,7 +84,7 @@ export default {
             loginMessage : "",
             schema  : {
                 email: 'required|email',
-                password: 'required|min:2',
+                password: 'required|min:4',
                 remeberme : (value) => {
                    return true
                 }
@@ -96,17 +97,18 @@ export default {
     methods : {
         async onSubmit(dataForm){
             this.loginMessage = "";
-            axiosInstance.post("/api/singin",dataForm).then( response =>  {
+            axiosInstance.post("/api/singin",dataForm).then(   async( response)  =>  {
                 if(!response.data.success && response.data.connection){
                     this.loginMessage = response.data.message
                 }else{
-                    saveDataInLocalStorage("authUserInfo" ,response.data.authData)
-                    const isAuth =  isAuthenticated();
+                    await saveDataInLocalStorage("authUserInfo" ,response.data.authData)
+                    const isAuth =  await isAuthenticated();
                     if (isAuth) {
-                        this.router.push({ name: 'home'})
+                        this.router.replace({ name: 'home'})
                     }
                 }
-            }).catch(function (error) {
+            }).catch( (error)  => {
+                this.loginMessage  = `Message : ${error.message} - status ${error.status} ` 
                 console.log(error);
             });
         },

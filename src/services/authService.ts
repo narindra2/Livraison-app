@@ -1,12 +1,6 @@
-import axios from "axios"
 
-const baseUrl = "http://localhost:3333"
-export const axiosInstance = axios.create({
-    baseURL: baseUrl,
-});
-
-export const  saveDataInLocalStorage =  async (key = "", value = {})  => {
-    return  await localStorage.setItem(key,  JSON.stringify(value));
+export const  saveDataInLocalStorage =   (key = "", value = {})  => {
+    return   localStorage.setItem(key,  JSON.stringify(value));
 }
 export const getDataInLocalStorage =   (key = "", defaut = null)  => {
     const data =    localStorage.getItem(key);
@@ -16,9 +10,23 @@ export const getDataInLocalStorage =   (key = "", defaut = null)  => {
         return defaut;
      }
 }
-export const isAuthenticated = async ()  => {
+export const getAuthUserInfo =   ()  => {
+   try {
+       return  getDataInLocalStorage("authUserInfo").authUserInfo;
+   } catch (error) {
+       return  null;
+   }
+}
+export const getAuthTokenAccess =   ()  => {
     try {
-       const authInfo = await getDataInLocalStorage("authUserInfo");
+        return  getDataInLocalStorage("authUserInfo").authUserToken;
+    } catch (error) {
+        return  null;
+    }
+}
+export const isAuthenticated =  ()  => {
+    try {
+       const authInfo =  getDataInLocalStorage("authUserInfo");
        if(authInfo.authUserToken && authInfo.authUserInfo.id){
             return true;
         }else{
@@ -27,5 +35,12 @@ export const isAuthenticated = async ()  => {
    } catch (error) {
         return false;
    } 
-   return false;
+}
+export const destroySession =  async ()  => {
+    try {
+        await saveDataInLocalStorage("authUserInfo", {});
+        await localStorage.removeItem("authUserInfo");
+   } catch (error) {
+        return false;
+   } 
 }

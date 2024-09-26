@@ -7,7 +7,7 @@
       "alpha_dash": "Ce champ ne peut contenir que des caractères alpha-numériques, tirets ou soulignés.",
       "alpha_spaces": "Ce champ ne peut contenir que des lettres ou des espaces.",
       "between": "Ce champ doit être compris entre 0:{min} et 1:{max}.",
-      "confirmed": "Ce champ ne correspond pas.",
+      "confirmed": "Ce champ ne correspond pas au  0:{target} .",
       "digits": "Ce champ doit être un nombre entier de 0:{length} chiffres.",
       "dimensions": "Ce champ doit avoir une taille de 0:{width} pixels par 1:{height} pixels.",
       "email": "Veuillez entrer un e-mail valide.",

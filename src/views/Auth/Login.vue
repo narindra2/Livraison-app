@@ -16,8 +16,8 @@
             </div>
             <div class="card shadow ">
                 <div class="card-body">
-                    <VeeForm v-slot="{ handleSubmit  ,errors  ,meta   }" :validation-schema="schema" as="div" @invalid-submit="onInvalidSubmit">
-                    <form  @submit="handleSubmit($event, onSubmit)"  :validation-schema="schema">
+                    <VeeForm v-slot="{ handleSubmit  ,errors  ,meta ,isSubmitting  }" :validation-schema="schema" as="div" @invalid-submit="onInvalidSubmit" >
+                    <form  @submit="handleSubmit($event, onSubmit)"   >
                         <div class="form-group mb-3">
                             <label class="form-check-label" for="">Email :</label>
                             <div class="input-group input-group-merge">
@@ -46,7 +46,16 @@
                         </div>
                         <ErrorInputForm class="text-center" v-if="loginMessage" :message="loginMessage"/>
                         <div class="d-grid gap-2 ">
-                            <button class=" btn  btn-success" :disabled ="!meta.valid" >Se connecter</button>
+                            <button class=" btn  btn-success" type="submit" :disabled ="!meta.valid ||  showLoading " >
+                                Se connecter
+                                <span v-show="showLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <div class="d-grid gap-2 mt-3">
+                            <button class=" btn  btn-success" @click="ping()" :disabled =" showLoading " >
+                               Ping
+                                <span v-show="showLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            </button>
                         </div>
                         
                         <div class="mt-3 row" >
@@ -75,6 +84,8 @@
 <script>
 import {   saveDataInLocalStorage , isAuthenticated } from '@/services/authService';
 import { axiosInstance  } from '@/services/utilService';
+import axios from 'axios';
+
 import { useRouter } from 'vue-router';
 export default {
     data () {
@@ -82,6 +93,7 @@ export default {
             router :  useRouter(),
             inputPassword : "password",
             loginMessage : "",
+            showLoading  : false,
             schema  : {
                 email: 'required|email',
                 password: 'required|min:4',
@@ -97,7 +109,8 @@ export default {
     methods : {
         async onSubmit(dataForm){
             this.loginMessage = "";
-            axiosInstance.post("/api/singin",dataForm).then(   async( response)  =>  {
+            this.showLoading =  true;
+            axiosInstance.post("/api/sigin",dataForm).then(   async( response)  =>  {
                 if(!response.data.success && response.data.connection){
                     this.loginMessage = response.data.message
                 }else{
@@ -107,10 +120,27 @@ export default {
                         this.router.replace({ name: 'home'})
                     }
                 }
+                this.showLoading =  false;
             }).catch( (error)  => {
                 this.loginMessage  = `Message : ${error.message} - status ${error.status} ` 
                 console.log(error);
+                this.showLoading =  false;
             });
+        },
+        async ping(){
+            console.log("ping ping ...");
+            this.loginMessage = "";
+            this.showLoading =  true;
+            axios.defaults.baseURL = 'https://testeur-app.zkcl3814.odns.fr'
+            axiosInstance.post("/api/ping",{}).then(   async( response)  =>  {
+                console.log(response.data);
+                this.showLoading =  false;
+            }).catch( (error)  => {
+                this.loginMessage  = `Message : ${error.message} - status ${error.status} ` 
+                console.log(error);
+                this.showLoading =  false;
+            });
+           
         },
          onInvalidSubmit({ values, errors, results }) {
             if (errors) {

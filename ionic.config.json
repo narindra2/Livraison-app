@@ -3,5 +3,7 @@
   "integrations": {
     "capacitor": {}
   },
-  "type": "vue-vite"
+  "type": "vue-vite",
+  "apiUrlProd" :  "https://testeur-app.zkcl3814.odns.fr/",
+  "apiUrlDev" :  "http://localhost:3333"
 }

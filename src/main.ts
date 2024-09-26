@@ -44,7 +44,7 @@ Object.entries(all).forEach(([name, rule]) => {
 import { configure } from 'vee-validate';
 import { localize } from '@vee-validate/i18n';
 import { setLocale } from '@vee-validate/i18n';
-// import fr from '@vee-validate/i18n/dist/locale/fr.json';
+//  import fr from '@vee-validate/i18n/dist/locale/fr.json';
 import fr from '../assets/validation/fr.json';
 setLocale('fr');
 configure({

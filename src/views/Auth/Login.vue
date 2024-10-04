@@ -83,7 +83,7 @@
 </style>
 <script>
 import {   saveDataInLocalStorage , isAuthenticated } from '@/services/authService';
-import { axiosInstance  } from '@/services/utilService';
+// import { axiosInstance  } from '@/services/utilService';
 import axios from 'axios';
 
 import { useRouter } from 'vue-router';
@@ -131,8 +131,16 @@ export default {
             console.log("ping ping ...");
             this.loginMessage = "";
             this.showLoading =  true;
-            axios.defaults.baseURL = 'https://testeur-app.zkcl3814.odns.fr'
-            axiosInstance.post("/api/ping",{}).then(   async( response)  =>  {
+            await axios.post("https://testeur-app.zkcl3814.odns.fr/api/ping" ,{},{
+                headers : {
+                    "Access-Control-Allow-Origin": "*",
+                },
+                proxy: {
+                    host: 'https://testeur-app.zkcl3814.odns.fr',
+                    // port: 3333
+                }
+                
+            }).then( ( response)  =>  {
                 console.log(response.data);
                 this.showLoading =  false;
             }).catch( (error)  => {
@@ -140,6 +148,7 @@ export default {
                 console.log(error);
                 this.showLoading =  false;
             });
+            
            
         },
          onInvalidSubmit({ values, errors, results }) {

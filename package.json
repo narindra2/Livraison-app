@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@awesome-cordova-plugins/http": "^6.9.0",
+    "@capacitor-community/http": "^1.4.1",
     "@capacitor/android": "6.1.2",
     "@capacitor/app": "6.0.1",
     "@capacitor/core": "^6.1.2",
